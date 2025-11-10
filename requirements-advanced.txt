@@ -1,0 +1,39 @@
+# Advanced Dependencies for Maximum Accuracy
+# Install these for ultra-accurate detection with YOLOv8 and ensemble methods
+
+# Core dependencies (must be installed first)
+-r requirements.txt
+
+# YOLOv8 and deep learning frameworks
+ultralytics>=8.0.0       # YOLOv8 - state-of-the-art object detection
+torch>=2.0.0             # PyTorch deep learning framework
+torchvision>=0.15.0      # Computer vision utilities for PyTorch
+
+# Advanced image processing
+scipy>=1.10.0            # Scientific computing library
+
+# Configuration and utilities
+pyyaml>=6.0              # YAML configuration file support
+tqdm>=4.65.0             # Progress bars for model downloads
+
+# Optional: GPU acceleration (if you have NVIDIA GPU)
+# Uncomment for much faster processing with GPU:
+# torch (with CUDA support - see https://pytorch.org/get-started/locally/)
+
+# Installation Instructions:
+#
+# 1. Basic installation (CPU only):
+#    pip install -r requirements-advanced.txt
+#
+# 2. With GPU support (NVIDIA only):
+#    # Install PyTorch with CUDA first:
+#    pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+#    # Then install the rest:
+#    pip install ultralytics scipy pyyaml tqdm
+#
+# 3. For Raspberry Pi (CPU only):
+#    # YOLOv8 works but is slower - stick with ensemble mode
+#    pip install -r requirements-advanced.txt
+
+# Note: These packages are optional but provide significant accuracy improvements
+# Total additional size: ~1-2GB with PyTorch

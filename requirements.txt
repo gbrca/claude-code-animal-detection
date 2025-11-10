@@ -19,3 +19,11 @@ pillow>=10.0.0
 
 # Requests for downloading models
 requests>=2.31.0
+
+# Advanced detection features (optional - for maximum accuracy)
+# Uncomment these for state-of-the-art YOLOv8 and ensemble detection:
+# ultralytics>=8.0.0  # YOLOv8 (best accuracy)
+# torch>=2.0.0        # PyTorch backend for YOLOv8
+# torchvision>=0.15.0 # Vision utilities
+# scipy>=1.10.0       # Advanced image processing
+# pyyaml>=6.0         # Configuration file support
