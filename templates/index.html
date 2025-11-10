@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Detection App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐾 AI Animal Detection</h1>
+            <p class="subtitle">Upload an image to detect animals using artificial intelligence</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <div class="upload-icon">📷</div>
+                    <h2>Drop image here or click to upload</h2>
+                    <p>Supported formats: JPG, PNG, GIF, BMP</p>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+                        Choose File
+                    </button>
+                </div>
+            </div>
+
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing image...</p>
+            </div>
+
+            <div id="results" class="results" style="display: none;">
+                <h2>Detection Results</h2>
+
+                <div class="summary" id="summary"></div>
+
+                <div class="images-container">
+                    <div class="image-box">
+                        <h3>Original Image</h3>
+                        <img id="originalImage" src="" alt="Original">
+                    </div>
+                    <div class="image-box">
+                        <h3>Detected Animals</h3>
+                        <img id="resultImage" src="" alt="Result">
+                    </div>
+                </div>
+
+                <div id="detectionsList" class="detections-list"></div>
+
+                <button class="btn-secondary" onclick="resetApp()">Analyze Another Image</button>
+            </div>
+
+            <div id="error" class="error" style="display: none;">
+                <h2>⚠️ Error</h2>
+                <p id="errorMessage"></p>
+                <button class="btn-secondary" onclick="resetApp()">Try Again</button>
+            </div>
+        </main>
+
+        <footer>
+            <div class="info-section">
+                <h3>Supported Animals</h3>
+                <div class="animal-tags">
+                    <span class="tag">🐦 Bird</span>
+                    <span class="tag">🐱 Cat</span>
+                    <span class="tag">🐕 Dog</span>
+                    <span class="tag">🐴 Horse</span>
+                    <span class="tag">🐑 Sheep</span>
+                    <span class="tag">🐄 Cow</span>
+                    <span class="tag">🐘 Elephant</span>
+                    <span class="tag">🐻 Bear</span>
+                    <span class="tag">🦓 Zebra</span>
+                    <span class="tag">🦒 Giraffe</span>
+                </div>
+            </div>
+            <p class="footer-text">Powered by YOLO (You Only Look Once) deep learning model</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
