@@ -1,0 +1,107 @@
+# Animal Detection Configuration File
+# Edit these settings to tune accuracy and performance
+
+# Model Selection
+# Options: 'yolov3-tiny', 'yolov3', 'yolov4-tiny', 'yolov4'
+# yolov3-tiny: Fastest, lowest accuracy (good for Raspberry Pi)
+# yolov3: Balanced speed and accuracy (recommended)
+# yolov4-tiny: Fast with better accuracy than v3-tiny
+# yolov4: Highest accuracy, slower (best for desktop)
+model: 'yolov3-tiny'
+
+# Detection Settings
+detection:
+  # Confidence threshold (0.0-1.0)
+  # Higher = more accurate but fewer detections
+  # 0.3-0.4: More detections, less accurate
+  # 0.5-0.6: Balanced (recommended)
+  # 0.7-0.8: High precision
+  confidence_threshold: 0.5
+
+  # Non-maximum suppression threshold (0.0-1.0)
+  # Lower = fewer overlapping boxes
+  # 0.3: Strict
+  # 0.4: Balanced (recommended)
+  # 0.5-0.6: Allow overlaps
+  nms_threshold: 0.4
+
+  # Input image size (pixels)
+  # Options: 320, 416, 512, 608, 832
+  # 416: Fast, standard
+  # 608: Better accuracy, slower (recommended for accuracy)
+  # 832: Best accuracy, slowest
+  input_size: 416
+
+  # Enable image preprocessing
+  # Improves accuracy but adds processing time
+  preprocess: false
+
+# Visual Settings
+visual:
+  # Draw bounding boxes on output images
+  draw_boxes: true
+
+  # Show confidence scores on boxes
+  show_confidence: true
+
+  # Box line thickness (pixels)
+  box_thickness: 2
+
+# Filter Settings
+filter:
+  # Only detect animals (ignore other objects)
+  animals_only: true
+
+  # Minimum box size (pixels) to filter out tiny detections
+  min_box_width: 30
+  min_box_height: 30
+
+# Performance Profiles
+# Uncomment one to use a preset configuration
+
+profiles:
+  # Maximum accuracy (slow)
+  max_accuracy:
+    model: 'yolov4'
+    confidence_threshold: 0.7
+    nms_threshold: 0.3
+    input_size: 608
+    preprocess: true
+
+  # Balanced (recommended)
+  balanced:
+    model: 'yolov3'
+    confidence_threshold: 0.5
+    nms_threshold: 0.4
+    input_size: 416
+    preprocess: false
+
+  # Fast (real-time)
+  fast:
+    model: 'yolov3-tiny'
+    confidence_threshold: 0.4
+    nms_threshold: 0.5
+    input_size: 416
+    preprocess: false
+
+  # Raspberry Pi optimized
+  raspberry_pi:
+    model: 'yolov3-tiny'
+    confidence_threshold: 0.5
+    nms_threshold: 0.4
+    input_size: 416
+    preprocess: false
+
+# Advanced Settings
+advanced:
+  # Use GPU if available (requires opencv-contrib-python with CUDA)
+  use_gpu: false
+
+  # Maximum images to process in batch mode
+  batch_size: 10
+
+  # Save detection statistics
+  save_stats: true
+
+  # Verbose output
+  verbose: true

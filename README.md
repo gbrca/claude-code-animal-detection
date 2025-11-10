@@ -94,9 +94,27 @@ Navigate to: `http://localhost:5000`
 
 ### Command Line Interface
 
-**Basic usage:**
+#### Basic CLI (Fast - YOLOv3-tiny)
 ```bash
 python main.py path/to/image.jpg
+```
+
+#### Enhanced CLI (Better Accuracy - Multiple Models)
+```bash
+# Use default model
+python detect_enhanced.py image.jpg
+
+# Use full YOLOv3 for better accuracy
+python detect_enhanced.py image.jpg --model yolov3
+
+# Maximum accuracy with YOLOv4
+python detect_enhanced.py image.jpg --model yolov4 --confidence 0.7 --size 608
+
+# Compare all models
+python compare_models.py image.jpg
+
+# List available models
+python detect_enhanced.py --list-models
 ```
 
 **With options:**
@@ -148,22 +166,60 @@ Detailed results (1 detection(s)):
 2. Upload an image through the browser
 3. View real-time detection results with visual bounding boxes
 
+### Example 3: Enhanced Detection with Better Models
+
+```bash
+# Compare all models to find the best one for your images
+python compare_models.py test_images/wildlife.jpg
+
+# Use YOLOv4 for maximum accuracy
+python detect_enhanced.py test_images/wildlife.jpg --model yolov4 --confidence 0.7
+```
+
+## Improving Accuracy
+
+Want better detection results? See **[ACCURACY_GUIDE.md](ACCURACY_GUIDE.md)** for detailed tips!
+
+**Quick improvements:**
+1. **Use a better model**: `python detect_enhanced.py image.jpg --model yolov3` or `--model yolov4`
+2. **Adjust confidence**: Lower threshold to catch more animals: `--confidence 0.4`
+3. **Increase input size**: Better for small animals: `--size 608`
+4. **Enable preprocessing**: For difficult images: `--preprocess`
+5. **Compare models**: Find the best one: `python compare_models.py image.jpg`
+
+**Model Comparison:**
+| Model | Accuracy | Speed | Size | Best For |
+|-------|----------|-------|------|----------|
+| yolov3-tiny | ★★☆☆☆ | Very Fast | 35MB | Real-time, Raspberry Pi |
+| yolov4-tiny | ★★★☆☆ | Fast | 23MB | Balanced speed/accuracy |
+| yolov3 | ★★★★☆ | Medium | 237MB | General use (recommended) |
+| yolov4 | ★★★★★ | Slow | 246MB | Maximum accuracy |
+
 ## Project Structure
 
 ```
 claude-code-animal-detection/
 ├── src/
-│   ├── detector.py      # Core detection module
-│   └── app.py           # Flask web application
-├── models/              # YOLO model files (auto-downloaded)
-├── uploads/             # Uploaded images (web interface)
-├── static/              # Web assets
+│   ├── detector.py              # Core detection module (YOLOv3-tiny)
+│   ├── detector_enhanced.py     # Enhanced detector (multiple models)
+│   └── app.py                   # Flask web application
+├── models/                      # YOLO model files (auto-downloaded)
+├── uploads/                     # Uploaded images (web interface)
+├── static/                      # Web assets
 │   ├── css/
 │   └── js/
-├── templates/           # HTML templates
-├── main.py             # CLI interface
-├── requirements.txt    # Python dependencies
-└── README.md          # This file
+├── templates/                   # HTML templates
+├── main.py                      # Basic CLI interface
+├── detect_enhanced.py           # Enhanced CLI with model selection
+├── compare_models.py            # Compare all models on an image
+├── example_usage.py             # API usage examples
+├── config.yaml                  # Configuration file
+├── requirements.txt             # Python dependencies
+├── README.md                    # Main documentation
+├── ACCURACY_GUIDE.md            # Guide to improving accuracy
+├── WINDOWS_INSTALL.md           # Windows installation guide
+├── setup_windows.bat            # Windows setup script
+└── quickstart.sh                # Linux/Mac quick start
 ```
 
 ## API Endpoints
