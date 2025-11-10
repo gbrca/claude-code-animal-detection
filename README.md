@@ -28,12 +28,30 @@ A powerful and easy-to-use animal detection application using deep learning. Det
 
 ### Prerequisites
 
-- Python 3.7 or higher
+- **Python 3.11 or 3.12** (recommended) or Python 3.8-3.13
 - pip package manager
 - 2GB+ free disk space (for models)
 - Internet connection (for initial model download)
 
-### Setup
+> **Windows Users**: If you encounter installation errors, see [WINDOWS_INSTALL.md](WINDOWS_INSTALL.md) for detailed troubleshooting.
+
+### Quick Setup
+
+#### Windows (Easy Way)
+
+1. **Double-click** `setup_windows.bat`
+2. Follow the prompts
+3. Done!
+
+Or manually:
+```cmd
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python src\app.py
+```
+
+#### Linux/Mac/Raspberry Pi
 
 1. **Clone the repository**
 ```bash
@@ -41,14 +59,16 @@ git clone https://github.com/yourusername/claude-code-animal-detection.git
 cd claude-code-animal-detection
 ```
 
-2. **Create a virtual environment (recommended)**
+2. **Run quick setup script**
 ```bash
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+chmod +x quickstart.sh
+./quickstart.sh
 ```
 
-3. **Install dependencies**
+Or manually:
 ```bash
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
